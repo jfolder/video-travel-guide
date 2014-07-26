@@ -7,9 +7,24 @@
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/main.css">
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-		<script src="js/app.js"></script>
+		<!-- <script src="js/app.js"></script> -->
 	</head>
 	<body>
-		<h3>This website (called the Video Travel Guide) will allow users who are getting ready to travel a way to type in their travel destination and view videos that only pertain to their travels. Video will be pulled from youtube in the current version, but the new version will also retrieve videos from different sources.</h3>
+		<article>
+			<header>
+				<form class="form1" onsubmit="return false;">
+					<input type="text" placeholder='e.g., "Italy" or "France"' name="tags" size="30" autofocus required>
+					<input type="submit" value="Submit">
+				</form>
+			</header>
+			<section>
+				<iframe width="560" height="315" src="//www.youtube.com/embed/g0g9vEeA0VM" frameborder="0" allowfullscreen></iframe>
+			</section>
+			<footer>
+				<h3>This website (called the Video Travel Guide) will allow users who are getting ready to travel a way to type in their travel destination and view videos that only pertain to their travels. Video will be pulled from youtube in the current version, but the new version will also retrieve videos from different sources.</h3>
+			</footer>
+		</article>
+		
+		
 	</body>
 </html>
