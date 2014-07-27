@@ -20,11 +20,6 @@ $(document).ready(function() {
 		}
 		return ID;
 	}
-/*
-	var request = {tag: topic,
-		      pagesize: 10,
-		        period: 'all_time'};
-*/
 
 	function getVideos(search)
 	{
@@ -35,16 +30,6 @@ $(document).ready(function() {
 			type: "GET",
 			})
 		.done(function(result){
-			/*
-			var searchResults = showSearchResults(request.tag, result.items.length);
-			$('.search-results').html(searchResults);
-
-			$.each(result.items, function(i, item) {
-				var topPerson = showAnswerers(item);
-				$('.results').append(topPerson);
-			});
-			*/
-			/* result.feed.entry[0].title.$t */
 			for(var i = 0; i < result.feed.entry.length; i++)
 			{
 				var link = result.feed.entry[i].link[0].href;
