@@ -1,5 +1,13 @@
 $(document).ready(function() {
 
+	$('.form1').submit( function(event){
+		// zero out results if previous search has run
+		// $('.results').html('');
+		// get the value of the tags the user submitted
+		var search = $(this).find("input[name='tags']").val();
+		getVideos(search);
+	});
+
 	function YouTubeGetID(url) {
 		var ID = '';
 		url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
@@ -18,34 +26,36 @@ $(document).ready(function() {
 		        period: 'all_time'};
 */
 
-	var result = $.ajax({
-		url: "http://gdata.youtube.com/feeds/api/videos?alt=json&v=2&q=cars&safeSearch=none&time=all_time&uploader=partner",
-		dataType: "json",
-		type: "GET",
+	function getVideos(search)
+	{
+		var result = $.ajax({
+			url: "http://gdata.youtube.com/feeds/api/videos?alt=json&v=2&q=" + search + "&safeSearch=none&time=all_time&uploader=partner",
+			dataType: "json",
+			type: "GET",
+			})
+		.done(function(result){
+			/*
+			var searchResults = showSearchResults(request.tag, result.items.length);
+			$('.search-results').html(searchResults);
+
+			$.each(result.items, function(i, item) {
+				var topPerson = showAnswerers(item);
+				$('.results').append(topPerson);
+			});
+			*/
+			/* result.feed.entry[0].title.$t */
+
+			var link = result.feed.entry[0].link[0].href;
+
+			$("section iframe").attr("src", "//www.youtube.com/embed/" + YouTubeGetID(link));
 		})
-	.done(function(result){
-		/*
-		var searchResults = showSearchResults(request.tag, result.items.length);
-		$('.search-results').html(searchResults);
-
-		$.each(result.items, function(i, item) {
-			var topPerson = showAnswerers(item);
-			$('.results').append(topPerson);
+		.fail(function(jqXHR, error, errorThrown){
+			/*
+			var errorElem = showError(error);
+			$('.search-results').append(errorElem);
+			*/
+			alert("There was a problem");
 		});
-		*/
-		/* result.feed.entry[0].title.$t */
+	}
 
-		var link = result.feed.entry[0].link[0].href;
-
-		YouTubeGetID(link);
-
-		$("section iframe").attr("src", "//www.youtube.com/embed/" + YouTubeGetID(link));
-	})
-	.fail(function(jqXHR, error, errorThrown){
-		/*
-		var errorElem = showError(error);
-		$('.search-results').append(errorElem);
-		*/
-		alert("There was a problem");
-	});
 });
