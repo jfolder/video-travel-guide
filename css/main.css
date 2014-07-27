@@ -1,5 +1,10 @@
-h2, form {
-	margin:0 auto;
+header {
+	text-align: center;
+}
+
+h2 {
+	padding:0;
+	margin:0;
 }
 
 iframe {
