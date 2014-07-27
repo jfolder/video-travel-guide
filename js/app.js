@@ -44,10 +44,13 @@ $(document).ready(function() {
 			});
 			*/
 			/* result.feed.entry[0].title.$t */
-
-			var link = result.feed.entry[0].link[0].href;
-
-			$("section iframe").attr("src", "//www.youtube.com/embed/" + YouTubeGetID(link));
+			alert(result.feed.entry.length);
+			for(var i; i < result.feed.entry.length; i++)
+			{
+				var link = result.feed.entry[i].link[0].href;
+				$("section").append("<iframe id=\"" + i + "\" width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/bBH0ele7qdw\" frameborder=\"0\" allowfullscreen></iframe>");
+				$("section iframe#" + i + "").attr("src", "//www.youtube.com/embed/" + YouTubeGetID(link));
+			}
 		})
 		.fail(function(jqXHR, error, errorThrown){
 			/*
