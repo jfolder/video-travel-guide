@@ -44,8 +44,7 @@ $(document).ready(function() {
 			});
 			*/
 			/* result.feed.entry[0].title.$t */
-			alert(result.feed.entry.length);
-			for(var i; i < result.feed.entry.length; i++)
+			for(var i = 0; i < result.feed.entry.length; i++)
 			{
 				var link = result.feed.entry[i].link[0].href;
 				$("section").append("<iframe id=\"" + i + "\" width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/bBH0ele7qdw\" frameborder=\"0\" allowfullscreen></iframe>");
