@@ -1,4 +1,17 @@
 $(document).ready(function() {
+
+	function YouTubeGetID(url) {
+		var ID = '';
+		url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+		if(url[2] !== undefined) {
+			ID = url[2].split(/[^0-9a-z_]/i);
+			ID = ID[0];
+		}
+		else {
+			ID = url;
+		}
+		return ID;
+	}
 /*
 	var request = {tag: topic,
 		      pagesize: 10,
@@ -24,7 +37,9 @@ $(document).ready(function() {
 
 		var link = result.feed.entry[0].link[0].href;
 
-		$("section iframe").attr("src", link);
+		YouTubeGetID(link);
+
+		$("section iframe").attr("src", "//www.youtube.com/embed/" + YouTubeGetID(link));
 	})
 	.fail(function(jqXHR, error, errorThrown){
 		/*
