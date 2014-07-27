@@ -29,7 +29,7 @@ $(document).ready(function() {
 	function getVideos(search)
 	{
 		var result = $.ajax({
-			url: "http://gdata.youtube.com/feeds/api/videos?alt=json&v=2&q=" + search + "&safeSearch=strict&time=all_time&uploader=partner",
+			url: "http://gdata.youtube.com/feeds/api/videos?alt=json&v=2&q=" + search + "%20travel&safeSearch=strict&time=all_time&uploader=partner",
 			dataType: "json",
 			type: "GET",
 			})
